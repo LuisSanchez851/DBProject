@@ -7,6 +7,7 @@ import { ClienteInicioComponent } from './cliente-inicio/cliente-inicio.componen
 import { ComprasDevolucionesComponent } from './compras-devoluciones/compras-devoluciones.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { AgentePanelComponent } from './agente-panel/agente-panel.component';
+import { ProductosComponent } from './productos/productos.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AgentePanelComponent } from './agente-panel/agente-panel.component';
     ClienteInicioComponent,
     ComprasDevolucionesComponent,
     ComentariosComponent,
-    AgentePanelComponent
+    AgentePanelComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,
