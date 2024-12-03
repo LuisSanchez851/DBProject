@@ -12,8 +12,14 @@ const routes: Routes = [
   { path : 'compras', component: ComprasDevolucionesComponent },
   { path : 'comentarios', component: ComentariosComponent },
   { path : 'agente-panel', component: AgentePanelComponent },
+<<<<<<< HEAD
   { path : 'productos', component: ProductosComponent },
   { path : 'agente', component: AgentePanelComponent},
+=======
+  { path : 'productos', component: ProductosComponent }
+
+
+>>>>>>> origin/main
 
 ];
 
