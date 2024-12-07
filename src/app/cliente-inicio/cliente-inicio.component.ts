@@ -17,10 +17,9 @@ export class ClienteInicioComponent {
   
 
 verProducto(id_producto:number):void {
-  console.log('ID del producto', id_producto);
-  this.router.navigate(['producto:id_producto']);
-}
+  this.router.navigate([`producto/${id_producto}`]);
 
+}
 
   constructor(private http: HttpClient, private router: Router) { }
 

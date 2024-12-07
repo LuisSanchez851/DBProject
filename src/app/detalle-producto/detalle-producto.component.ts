@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-productos',
-  templateUrl: './producto.component.html',
-  styleUrl: './producto.component.css'
+  selector: 'app-detalle-producto',
+  templateUrl: './detalle-producto.component.html',
+  styleUrls: ['./detalle-producto.component.css'] // Cambia `styleUrl` por `styleUrls`
 })
-export class ProductosComponent {
+
+export class DetalleProductoComponent {
+  
+  principal() {
+    this.router.navigate(['principal']);
+  }
+
   producto: any = {}; // Aquí guardaremos los detalles del producto
   cantidad: number = 1; // Cantidad seleccionada por el usuario
 
@@ -19,18 +26,16 @@ export class ProductosComponent {
   ) { }
 
   ngOnInit(): void {
-    // Obtener el id del producto de la URL
-    const productoId = this.route.snapshot.paramMap.get('id');
+    const productoId = this.route.snapshot.paramMap.get('id_producto');
+    console.log('ID del producto desde la URL:', productoId); // Depuración
     if (productoId) {
-      this.obtenerProducto(parseInt(productoId));
+      this.obtenerProducto(parseInt(productoId)); // Convierte a número
     }
   }
-
   // Obtener los detalles del producto desde la API
-  obtenerProducto(id: number): void {
-    this.http.get(`http://localhost:3000/productos/${id}`).subscribe(
+  obtenerProducto(id_producto: number): void {
+    this.http.get(`http://localhost:3000/api/productos/${id_producto}`).subscribe(
       (data) => {
-        console.log('Detalles del producto:', data);
         this.producto = data;
       },
       (error) => {
@@ -41,7 +46,7 @@ export class ProductosComponent {
 
   // Función para manejar la compra del producto
   comprar(): void {
-    alert(`Compraste ${this.cantidad} unidad(es) de ${this.producto.nombre}`);
+    alert(`Compraste ${this.cantidad} unidad(es) de ${this.producto.nombre_producto}`);
     // Aquí podrías agregar lógica para procesar la compra (como enviar la cantidad a un servicio de pago)
   }
 }

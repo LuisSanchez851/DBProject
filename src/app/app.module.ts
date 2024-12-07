@@ -6,17 +6,16 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'; 
 import { ClienteInicioComponent } from './cliente-inicio/cliente-inicio.component';
 import { ComprasDevolucionesComponent } from './compras-devoluciones/compras-devoluciones.component';
-import { ProductosComponent } from './producto/producto.component';
 import { AdminInicioComponent } from './admin-inicio/admin-inicio.component';
-
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClienteInicioComponent,
     ComprasDevolucionesComponent,
-    ProductosComponent,
-    AdminInicioComponent
+    AdminInicioComponent,
+    DetalleProductoComponent
   ],
   imports: [
     BrowserModule,
