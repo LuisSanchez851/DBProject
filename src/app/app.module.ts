@@ -5,17 +5,17 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'; 
 import { ClienteInicioComponent } from './cliente-inicio/cliente-inicio.component';
-import { ComprasDevolucionesComponent } from './compras-devoluciones/compras-devoluciones.component';
 import { AdminInicioComponent } from './admin-inicio/admin-inicio.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { ComentariosComponent } from './comentarios/comentarios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClienteInicioComponent,
-    ComprasDevolucionesComponent,
     AdminInicioComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    ComentariosComponent
   ],
   imports: [
     BrowserModule,

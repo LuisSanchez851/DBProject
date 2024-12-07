@@ -13,4 +13,9 @@ export class ProductosService {
   getProductos(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+  getProducto(id_producto: number){
+    return this.http.get<any>(`${this.apiUrl}/${id_producto}`);
+
+  }
 }

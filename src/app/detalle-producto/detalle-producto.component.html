@@ -1,19 +1,37 @@
+<!-- Botón Volver -->
 <button (click)="principal()">Volver</button>
 
+<!-- Detalles del Producto -->
 <div class="producto-detalle">
-    <h2>{{ producto.nombre_producto}}</h2>
-    <img [src]="producto.img" alt= "{{producto.nombre_producto}}">
-    <p>{{ producto.descripcion_producto }}</p>
-    <p>Precio: ${{ producto.precio }}</p>
-  
-    <!-- Selector de cantidad -->
-    <label for="cantidad">Cantidad:</label>
-    <input type="number" id="cantidad" [(ngModel)]="cantidad" min="1" max="10" />
-  
-    <button (click)="comprar()">Comprar</button>
-    <div *ngIf="!producto.nombre_producto">
-        <p>Error al cargar el producto. Inténtalo más tarde.</p>
-      </div>
-      
+  <h2>{{ producto.nombre_producto }}</h2>
+  <img [src]="producto.img" alt="{{ producto.nombre_producto }}">
+  <p>{{ producto.descripcion_producto }}</p>
+  <p>Precio: ${{ producto.precio }}</p>
+  <p>Calificación:</p>
+
+  <!-- Selector de cantidad -->
+  <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" [(ngModel)]="cantidad" min="1" max="10" />
+<br>  
+<button (click)="comprar()">Comprar</button>
+  <button (click)="comentar()">Dejar un comentario</button>
+  <div *ngIf="!producto.nombre_producto">
+    <p>Error al cargar el producto. Inténtalo más tarde.</p>
   </div>
-  
+</div>
+
+<!-- Modal de Confirmación -->
+<div *ngIf="showModal" class="modal-overlay">
+  <div class="modal">
+    <h3>¿Desea comprar {{ cantidad }} unidad(es)?</h3>
+    <div class="modal-actions">
+      <button (click)="confirmarCompra()">Aceptar</button>
+      <button (click)="cancelarCompra()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Mensaje de éxito -->
+<div *ngIf="showSuccessMessage" class="success-message">
+  <div class="modal">Felicidades, pago procesado!</div>
+</div>

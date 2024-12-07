@@ -3,21 +3,26 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-detalle-producto',
   templateUrl: './detalle-producto.component.html',
-  styleUrls: ['./detalle-producto.component.css'] // Cambia `styleUrl` por `styleUrls`
+  styleUrls: ['./detalle-producto.component.css']
 })
 
 export class DetalleProductoComponent {
   
-  principal() {
-    this.router.navigate(['principal']);
+  comentar(){
+    this.router.navigate(['comentarios']);
   }
 
-  producto: any = {}; // Aquí guardaremos los detalles del producto
+  principal() {
+    this.router.navigate(['/']);
+  }
+
+  producto: any = {}; // Aquí guardamos los detalles del producto
   cantidad: number = 1; // Cantidad seleccionada por el usuario
+  showModal: boolean = false; // Controla la visibilidad del modal
+  showSuccessMessage: boolean = false; // Controla la visibilidad del mensaje de éxito
 
   constructor(
     private route: ActivatedRoute,
@@ -26,15 +31,15 @@ export class DetalleProductoComponent {
   ) { }
 
   ngOnInit(): void {
-    const productoId = this.route.snapshot.paramMap.get('id_producto');
-    console.log('ID del producto desde la URL:', productoId); // Depuración
+    const productoId = this.route.snapshot.paramMap.get(`id_producto`);
     if (productoId) {
-      this.obtenerProducto(parseInt(productoId)); // Convierte a número
+      this.obtenerProducto(parseInt(productoId));
     }
   }
+
   // Obtener los detalles del producto desde la API
   obtenerProducto(id_producto: number): void {
-    this.http.get(`http://localhost:3000/api/productos/${id_producto}`).subscribe(
+    this.http.get(`http://localhost:3000/producto/${id_producto}`).subscribe(
       (data) => {
         this.producto = data;
       },
@@ -44,9 +49,29 @@ export class DetalleProductoComponent {
     );
   }
 
-  // Función para manejar la compra del producto
+  // Función para mostrar el modal de compra
   comprar(): void {
-    alert(`Compraste ${this.cantidad} unidad(es) de ${this.producto.nombre_producto}`);
-    // Aquí podrías agregar lógica para procesar la compra (como enviar la cantidad a un servicio de pago)
+    this.showModal = true; // Mostrar modal
+  }
+
+  // Confirmar la compra y actualizar el stock
+  confirmarCompra(): void {
+    // Aquí llamamos al backend para procesar el pago y actualizar el stock
+    this.http.post(`http://localhost:3000/comprar/${this.producto.id_producto}`, { cantidad: this.cantidad })
+      .subscribe(
+        response => {
+          this.showModal = false; // Cerrar el modal
+          this.showSuccessMessage = true; // Mostrar el mensaje de éxito
+          setTimeout(() => this.showSuccessMessage = false, 3000); // Ocultar mensaje de éxito después de 3 segundos
+        },
+        error => {
+          console.error('Error al procesar la compra:', error);
+        }
+      );
+  }
+
+  // Cancelar la compra
+  cancelarCompra(): void {
+    this.showModal = false; // Cerrar el modal
   }
 }
