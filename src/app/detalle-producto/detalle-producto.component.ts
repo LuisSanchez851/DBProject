@@ -23,6 +23,7 @@ export class DetalleProductoComponent {
   cantidad: number = 1; // Cantidad seleccionada por el usuario
   showModal: boolean = false; // Controla la visibilidad del modal
   showSuccessMessage: boolean = false; // Controla la visibilidad del mensaje de éxito
+  stock: number =0;
 
   constructor(
     private route: ActivatedRoute,
