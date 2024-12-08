@@ -27,6 +27,7 @@
       <div class="opciones">
         <button routerLink="compras">Sobre Nosotros</button>
         <button routerLink="agente">Devolución</button>
+        <button (click)="buscarSucursales()">Ver Sucursales</button>
       </div>
       
       <!-- Productos -->
@@ -49,5 +50,9 @@
         <button class="carousel-prev" (click)="prevSlide()">&#10094;</button>
         <button class="carousel-next" (click)="nextSlide()">&#10095;</button>
       </div>
+      
+      <div class="map" *ngIf="isMapVisible">
+        <app-map></app-map> 
+      </div>
     </div>
-    
+

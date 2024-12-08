@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cliente-inicio.component.css']  // Asegúrate de que la propiedad sea "styleUrls" (con 's')
 })
 export class ClienteInicioComponent {
-
+  isMapVisible: boolean = false;
   productos: any[] = []; // Aquí guardaremos los productos obtenidos
   isLoginVisible: boolean = false;
   username: string = '';
@@ -20,6 +20,10 @@ verProducto(id_producto:number):void {
   this.router.navigate([`producto/${id_producto}`]);
 
 }
+
+buscarSucursales() {
+  this.isMapVisible = !this.isMapVisible;
+  }  
 
   constructor(private http: HttpClient, private router: Router) { }
 

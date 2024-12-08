@@ -4,6 +4,7 @@ import { ClienteInicioComponent } from './cliente-inicio/cliente-inicio.componen
 import { AdminInicioComponent } from './admin-inicio/admin-inicio.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path : 'principal', component : ClienteInicioComponent},
   { path : 'producto/:id_producto', component : DetalleProductoComponent},
   { path : 'comentarios', component : ComentariosComponent},
+  { path : 'buscarSucursales', component : MapComponent}
 
 ];
 

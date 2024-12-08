@@ -8,6 +8,7 @@ import { ClienteInicioComponent } from './cliente-inicio/cliente-inicio.componen
 import { AdminInicioComponent } from './admin-inicio/admin-inicio.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
     ClienteInicioComponent,
     AdminInicioComponent,
     DetalleProductoComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
