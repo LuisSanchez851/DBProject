@@ -11,12 +11,12 @@ export class AdminInicioComponent {
   activeForm: string | null = null;
 
   // Variables para los datos de cada formulario
-  cliente = { nombre: '', correo: '' };
-  devolucion = { producto: '', motivo: '' };
+  cliente = { nombre: '', apellido: '', correo: '', telefono: '', direccion: '', latitud: 0, longitud: 0 };
+  devolucion = { idCompra: 0, motivo: '' };
   producto = { nombre: '', descripcion: '', precio: 0, stock: 0 };
-  sucursal = { nombre: '', direccion: '' };
-  compra = { nombre: '', valor: 0 };
-  reporte = { fechaInicio: '', fechaFin: '' };
+  sucursal = { nombre: '', direccion: '', latitud: 0, longitud: 0  };
+  compra = { idProducto: 0, cantidad: 0, valor: 0, idCliente: 0, idSucursal: 0};
+  reporte = { mes: 0, anio: 0 };
 
   constructor(private productosService: ProductosService) {}
 
@@ -86,12 +86,12 @@ export class AdminInicioComponent {
 
   resetForm(formName: string): void {
     switch (formName) {
-      case 'cliente': this.cliente = { nombre: '', correo: '' }; break;
-      case 'devolucion': this.devolucion = { producto: '', motivo: '' }; break;
+      case 'cliente': this.cliente = { nombre: '', apellido: '', correo: '', telefono: '', direccion: '', latitud: 0, longitud: 0 }; break;
+      case 'devolucion': this.devolucion = { idCompra: 0, motivo: '' }; break;
       case 'producto': this.producto = { nombre: '', descripcion: '', precio: 0, stock:0 }; break;
-      case 'sucursal': this.sucursal = { nombre: '', direccion: '' }; break;
-      case 'compra': this.compra = { nombre: '', valor: 0 }; break;
-      case 'reporte': this.reporte = { fechaInicio: '', fechaFin: '' }; break;
+      case 'sucursal': this.sucursal = { nombre: '', direccion: '', latitud: 0, longitud: 0 }; break;
+      case 'compra': this.compra = { idProducto: 0, cantidad: 0, valor: 0, idCliente: 0, idSucursal: 0 }; break;
+      case 'reporte': this.reporte = { mes: 0, anio: 0  }; break;
     }
     this.activeForm = null;
   }
