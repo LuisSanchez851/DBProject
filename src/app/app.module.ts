@@ -21,7 +21,7 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     provideClientHydration(),
